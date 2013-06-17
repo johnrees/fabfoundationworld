@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Lab do
 
-  let(:lab) { Lab.new(name: 'Space Lab', country: 'France') }
+  let(:lab) { Lab.create(name: 'Space Lab', country: 'France') }
 
   describe "attributes" do
 
@@ -16,7 +16,8 @@ describe Lab do
 
       it "should be verifiable" do
         lab.verify!
-        lab.reload.should be_verified
+        lab.reload.previous_version.should be_unverified
+        lab.should be_verified
       end
 
     end
@@ -24,7 +25,6 @@ describe Lab do
     describe "slugs" do
 
       it "should have slug" do
-        lab.save
         lab.slug.should eq('space-lab')
       end
 

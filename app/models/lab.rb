@@ -1,5 +1,6 @@
 class Lab < ActiveRecord::Base
 
+  has_paper_trail
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 
