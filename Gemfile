@@ -19,6 +19,9 @@ gem 'dotenv-rails', :groups => [:development, :test]
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
+gem 'simple_form'
+gem 'carmen-rails', github: 'jim/carmen-rails'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

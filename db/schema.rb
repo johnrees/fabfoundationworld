@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20130617213305) do
     t.string   "slug"
     t.text     "address"
     t.string   "postal_code"
-    t.string   "country"
+    t.string   "country_code"
     t.string   "latitude"
     t.string   "longitude"
-    t.string   "urls",        array: true
+    t.string   "urls",         array: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

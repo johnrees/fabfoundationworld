@@ -6,7 +6,7 @@ class CreateLabs < ActiveRecord::Migration
       t.string :slug
       t.text :address
       t.string :postal_code
-      t.string :country
+      t.string :country_code
       t.string :latitude
       t.string :longitude
       t.string :urls, array: true
