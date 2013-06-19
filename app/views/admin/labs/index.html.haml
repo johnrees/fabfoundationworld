@@ -1,0 +1,7 @@
+%h1 Manage Labs
+
+%table
+  %tbody
+    - @labs.each do |lab|
+      = content_tag_for :tr, lab do
+        %td= link_to lab, edit_admin_lab_path(lab)

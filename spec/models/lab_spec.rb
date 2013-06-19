@@ -5,9 +5,25 @@ describe Lab do
   let(:lab) { Lab.create(name: 'Space Lab',
     country_code: 'FR',
     address: 'somewhere',
-    postal_code: '13113') }
+    postal_code: '13113',
+    kind: 0) }
 
   describe "attributes" do
+
+    describe "kinds" do
+
+      it { should validate_presence_of(:kind) }
+
+      it "should have kinds_for_select" do
+        Lab.kinds_for_select.should eq(
+          [
+            ['Fab Lab', 0],
+            ['Mini Fab Lab', 1],
+            ['Planned Fab Lab', 2]
+          ])
+      end
+
+    end
 
     %w(name address postal_code).each do |field|
       it { should validate_presence_of field }

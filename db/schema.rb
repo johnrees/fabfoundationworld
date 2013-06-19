@@ -18,9 +18,11 @@ ActiveRecord::Schema.define(version: 20130617213305) do
 
   create_table "labs", force: true do |t|
     t.string   "state"
+    t.integer  "kind"
     t.string   "name"
     t.string   "slug"
     t.text     "address"
+    t.text     "notes"
     t.string   "postal_code"
     t.string   "country_code"
     t.string   "latitude"
