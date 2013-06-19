@@ -2,5 +2,6 @@
 
 %ul
   - @labs.each do |lab|
-    = content_tag_for :li, lab do
-      = link_to lab, lab
+    - if can? :read, lab
+      = content_tag_for :li, lab do
+        = link_to lab, lab

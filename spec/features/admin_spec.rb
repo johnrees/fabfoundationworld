@@ -17,9 +17,9 @@ describe "Admin Area" do
   describe "edit lab" do
 
     it "can edit" do
+      pending "admin user for cancan"
       FactoryGirl.create(:lab, name: 'iaac')
       visit admin_root_path
-      save_and_open_page
       click_link 'iaac'
       fill_in 'Name', with: 'valldaura'
       click_button 'Update'

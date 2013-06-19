@@ -26,7 +26,8 @@ class Lab < ActiveRecord::Base
   end
 
   def country
-    Carmen::Country.coded(country_code).name
+    # country_code
+    Carmen::Country.coded("GB").name
   end
 
 private

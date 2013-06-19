@@ -4,14 +4,23 @@ describe "Labs" do
 
   describe "listing" do
 
-    before(:each) { visit '/labs' }
-
     it "should have list" do
+      visit '/labs'
       page.should have_selector 'h1', 'Listing Labs'
     end
 
+    it "should only list verified labs" do
+      unverified = FactoryGirl.create(:lab, name: 'unverified')
+      verified = FactoryGirl.create(:lab, name: 'verified')
+      verified.verify!
+      visit labs_path
+      page.should have_link 'verified'
+      page.should_not have_link 'unverified'
+    end
+
     it "should be clickable" do
-      FactoryGirl.create(:lab, name: 'NASA')
+      lab = FactoryGirl.create(:lab, name: 'NASA')
+      lab.verify!
       visit '/labs'
       click_link 'NASA'
       page.should have_selector 'h1', 'NASA'
@@ -21,9 +30,15 @@ describe "Labs" do
 
   describe "showing" do
 
-    it "should be showable" do
+    it "should not be showable if unverified" do
       lab = FactoryGirl.create(:lab, name: 'NASA')
-      visit lab_path(lab)
+      expect{ visit lab_path(lab) }.to raise_error(CanCan::AccessDenied)
+    end
+
+    it "should be showable if verified" do
+      lab = FactoryGirl.create(:lab, name: 'NASA')
+      lab.verify!
+      visit lab_path(lab.reload)
       page.should have_selector 'h1', 'NASA'
     end
 
@@ -47,7 +62,7 @@ describe "Labs" do
       select 'Fab Lab', from: 'Kind'
 
       click_button 'Create'
-      page.should have_selector '#notice', 'Lab was successfully created.'
+      page.should have_selector 'h1', 'Thank you'
     end
 
   end

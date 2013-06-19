@@ -1,5 +1,8 @@
 class LabsController < ApplicationController
 
+  def created
+  end
+
   # GET /labs
   # GET /labs.json
   def index
@@ -10,6 +13,7 @@ class LabsController < ApplicationController
   # GET /labs/1.json
   def show
     @lab = Lab.friendly.find(params[:id])
+    authorize! :show, @lab
   end
 
   # GET /labs/new
@@ -24,7 +28,7 @@ class LabsController < ApplicationController
 
     respond_to do |format|
       if @lab.save
-        format.html { redirect_to @lab, notice: 'Lab was successfully created.' }
+        format.html { render :created }
         format.json { render action: 'show', status: :created, location: @lab }
       else
         format.html { render action: 'new' }

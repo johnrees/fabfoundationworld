@@ -1,5 +1,8 @@
 Fabfoundationworld::Application.routes.draw do
-  resources :labs
+
+  resources :labs do
+    get :created, as: :collection
+  end
 
   namespace 'admin' do
     resources :labs

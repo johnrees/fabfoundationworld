@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20130617213305) do
     t.text     "notes"
     t.string   "postal_code"
     t.string   "country_code"
-    t.string   "latitude"
-    t.string   "longitude"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "urls",         array: true
     t.datetime "created_at"
     t.datetime "updated_at"

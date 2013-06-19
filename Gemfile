@@ -6,6 +6,8 @@ gem 'rails', '4.0.0.rc2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+gem 'geocoder'
+gem "cancan"
 gem 'sorcery', github: 'NoamB/sorcery'
 
 # Use SCSS for stylesheets

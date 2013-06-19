@@ -9,8 +9,8 @@ class CreateLabs < ActiveRecord::Migration
       t.text :notes
       t.string :postal_code
       t.string :country_code
-      t.string :latitude
-      t.string :longitude
+      t.float :latitude
+      t.float :longitude
       t.string :urls, array: true
 
       t.timestamps
