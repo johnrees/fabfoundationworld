@@ -21,6 +21,10 @@ class LabsController < ApplicationController
     @lab = Lab.new
   end
 
+  def map
+    @labs = Lab.all
+  end
+
   # POST /labs
   # POST /labs.json
   def create

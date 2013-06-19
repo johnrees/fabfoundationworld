@@ -1,10 +1,11 @@
 class Lab < ActiveRecord::Base
 
   has_paper_trail
+  has_many :opening_times
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
 
-  KINDS = %w[fab_lab mini_fab_lab planned_fab_lab]
+  KINDS = %w(fab_lab mini_fab_lab planned_fab_lab)
 
   validates :name, presence: true
   validates :address, :postal_code, :kind, presence: true

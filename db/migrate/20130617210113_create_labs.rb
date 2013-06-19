@@ -12,6 +12,7 @@ class CreateLabs < ActiveRecord::Migration
       t.float :latitude
       t.float :longitude
       t.string :urls, array: true
+      t.string :phone_number
 
       t.timestamps
     end

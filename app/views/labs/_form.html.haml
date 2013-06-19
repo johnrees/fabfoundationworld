@@ -1,13 +1,31 @@
 = simple_form_for @lab do |f|
-  = f.input :name
-  = f.input :address
-  = f.input :postal_code
-  = f.input :kind, collection: Lab.kinds_for_select, include_blank: false
+  %fieldset
+    %legend Details
+    = f.input :name
+    = f.input :address
+    = f.input :postal_code
+    = f.input :latitude
+    = f.input :longitude
 
-  = f.input :latitude
-  = f.input :longitude
+  %fieldset
+    %legend Lab
+    = f.input :kind, collection: Lab.kinds_for_select, include_blank: false
 
-  = f.input :notes
+  %fieldset
+    %legend Opening Hours
+    %table#opening_hours
+      - %w(monday tuesday wednesday thursday friday saturday sunday).each do |day|
+        %tr{class: day}
+          %th= day.capitalize
+          %td
+            hello
+            = label_tag do
+              = check_box_tag 'closed'
+              closed
+
+  %fieldset
+    %legend Misc
+    = f.input :notes
 
   / = f.input :opening_hours
   / = f.input :country_code do

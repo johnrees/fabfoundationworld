@@ -12,6 +12,7 @@ describe Lab do
 
     describe "kinds" do
 
+      it { should have_many(:opening_times) }
       it { should validate_presence_of(:kind) }
 
       it "should have kinds_for_select" do
@@ -26,7 +27,7 @@ describe Lab do
     end
 
     %w(name address postal_code).each do |field|
-      it { should validate_presence_of field }
+      it { should validate_presence_of field.to_sym }
     end
 
     describe "states" do

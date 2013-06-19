@@ -28,18 +28,36 @@ describe "Labs" do
 
   end
 
+  describe "map" do
+
+    it "should have map" do
+      visit "/map"
+      page.should have_selector '#map'
+    end
+
+  end
+
   describe "showing" do
 
+    let(:lab) { FactoryGirl.create(:lab, name: 'NASA') }
+
     it "should not be showable if unverified" do
-      lab = FactoryGirl.create(:lab, name: 'NASA')
       expect{ visit lab_path(lab) }.to raise_error(CanCan::AccessDenied)
     end
 
     it "should be showable if verified" do
-      lab = FactoryGirl.create(:lab, name: 'NASA')
       lab.verify!
       visit lab_path(lab.reload)
       page.should have_selector 'h1', 'NASA'
+    end
+
+    %w(name address postal_code).each do |name|
+      it "should show #{name}" do
+        pending "sort out labs show page"
+        lab.verify!
+        visit lab_path(lab.reload)
+        page.should have_content lab[name]
+      end
     end
 
   end
