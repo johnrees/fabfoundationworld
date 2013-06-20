@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'simple_form'
 gem 'carmen-rails', github: 'jim/carmen-rails'
+gem 'combined_time_select'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

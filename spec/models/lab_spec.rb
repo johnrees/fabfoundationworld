@@ -12,6 +12,8 @@ describe Lab do
 
     describe "kinds" do
 
+      pending { should have_and_belong_to_many :facilities }
+
       it { should have_many(:opening_times) }
       it { should validate_presence_of(:kind) }
 

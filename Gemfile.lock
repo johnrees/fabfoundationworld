@@ -79,6 +79,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    combined_time_select (1.0.0)
     diff-lcs (1.2.4)
     dotenv (0.8.0)
     dotenv-rails (0.8.0)
@@ -241,6 +242,7 @@ DEPENDENCIES
   capybara
   carmen-rails!
   coffee-rails (~> 4.0.0)
+  combined_time_select
   dotenv-rails
   factory_girl_rails
   friendly_id!

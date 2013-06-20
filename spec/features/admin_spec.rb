@@ -16,6 +16,13 @@ describe "Admin Area" do
 
   describe "edit lab" do
 
+    it "should have machines" do
+      lab = FactoryGirl.create(:lab, name: 'iaac')
+      machine = FactoryGirl.create(:machine, name: 'laser')
+      visit edit_admin_lab_path(lab)
+      page.should have_content 'laser'
+    end
+
     it "can edit" do
       pending "admin user for cancan"
       FactoryGirl.create(:lab, name: 'iaac')
@@ -24,6 +31,12 @@ describe "Admin Area" do
       fill_in 'Name', with: 'valldaura'
       click_button 'Update'
       page.should have_selector '#notice', 'Lab was successfully updated.'
+    end
+
+    it "should have map" do
+      lab = FactoryGirl.create(:lab, name: 'iaac')
+      visit edit_admin_lab_path(lab)
+      page.should have_selector '#map'
     end
 
   end
