@@ -3,10 +3,11 @@
   %head
     %title Fabfoundationworld
     = stylesheet_link_tag    "application", media: "all"
-    = javascript_include_tag "application"
+    = javascript_include_tag "admin"
     = csrf_meta_tags
   %body
     %h1= link_to title, admin_root_path
+    = link_to "Preview Site", root_path
     - flash.each do |key, msg|
       = content_tag :div, msg, :id => key
     = yield
