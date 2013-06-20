@@ -6,7 +6,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %h1= title
+    %h1= link_to title, admin_root_path
     - flash.each do |key, msg|
       = content_tag :div, msg, :id => key
     = yield

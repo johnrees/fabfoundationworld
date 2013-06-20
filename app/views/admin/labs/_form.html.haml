@@ -1,14 +1,16 @@
-= simple_form_for @lab do |f|
+= simple_form_for [:admin,@lab] do |f|
   %fieldset
     %legend Basic Information
 
-    country
+    / = f.input :country_code do
+    / = f.country_select :country_code, { object: f.object, prompt: "Country" }
+
     = f.input :name
-    #map/
+    #map
     = f.input :address
     = f.input :postal_code
-    = f.input :latitude
-    = f.input :longitude
+    = f.input :latitude, as: 'hidden'
+    = f.input :longitude, as: 'hidden'
 
     / = f.input :phone_number
     / = f.input :email_address
@@ -19,40 +21,41 @@
   %fieldset
     %legend Lab Facilities
     = f.input :kind, collection: Lab.kinds_for_select, include_blank: false
-    %table#facilities
-      - Machine.all.each do |machine|
-        %tr
-          %th= machine
-          %td blargh
+
+    %fieldset
+      %legend Machines
+      %table#facilities
+        - Machine.all.each do |machine|
+          %tr
+            %th= machine
+            %td blargh
 
   %fieldset
     %legend Opening Hours
     %table#opening_hours
       - %w(monday tuesday wednesday thursday friday saturday sunday).each_with_index do |day, index|
-        %tr{class: day}
+        %tr{class: "#{day} day#{index} day"}
           %th= day.capitalize
           %td
             .times
-              = time_select :start_time, :blah, default: Time.now.change(hour: 9, min: 0), combined: true, minute_interval: 30, time_separator: ''
+              = time_select :start_time, :blah, {default: Time.now.change(hour: 9, min: 0), combined: true, minute_interval: 30, time_separator: ''}, class: 'start-time'
               \-
-              = time_select :end_time, :blah, default: Time.now.change(hour: 17, min: 0), combined: true, minute_interval: 30, time_separator: ''
+              = time_select :end_time, :blah, {default: Time.now.change(hour: 17, min: 0), combined: true, minute_interval: 30, time_separator: ''}, class: 'end-time'
           %td
             = label_tag do
               = check_box_tag 'closed', {}, (index >= 5), class: 'closed'
               Closed
           %td
             - if index == 0
-              = link_to "↓ Apply to all", "#"
+              = link_to "↓ Apply to all", "#", id: 'apply-to-all'
 
-  %fieldset
-    %legend Photos
+  / %fieldset
+  /   %legend Photos
 
   %fieldset
     %legend Misc
     = f.input :notes
 
-  / = f.input :opening_hours
-  / = f.input :country_code do
-  / = f.country_select :country_code, { object: f.object, prompt: "Country" }
+  / = f.input :state, collection: @lab.state_paths.to_states
   .actions
     = f.submit

@@ -69,7 +69,7 @@ class Admin::LabsController < Admin::AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lab_params
-      params.require(:lab).permit(:name, :address, :postal_code)
+      params.require(:lab).permit(:name, :address, :postal_code, :state)
     end
 end
 

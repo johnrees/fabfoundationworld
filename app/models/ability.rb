@@ -13,8 +13,8 @@ class Ability
       can :read, Lab do |lab|
         lab.verified?
       end
-
       can :create, Lab
+      # can :update, Lab
 
     # end
     #
