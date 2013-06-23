@@ -47,6 +47,19 @@ describe "Labs" do
 
     let(:lab) { FactoryGirl.create(:lab, name: 'NASA') }
 
+    it "should show if open" do
+      lab.opening_times << FactoryGirl.create(:opening_time)
+      lab.verify!
+      visit lab_path(lab)
+      page.should have_content 'Open'
+    end
+
+    it "should show if closed" do
+      lab.verify!
+      visit lab_path(lab)
+      page.should have_content 'Closed'
+    end
+
     it "should not be showable if unverified" do
       expect{ visit lab_path(lab) }.to raise_error(CanCan::AccessDenied)
     end

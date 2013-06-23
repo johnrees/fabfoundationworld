@@ -17,15 +17,11 @@ class Lab < ActiveRecord::Base
   end
 
   def self.open
-    t = Time.now
-    joins(:opening_times)
-    .where(
-      "opening_times.day_of_the_week = ? AND opening_times.minute <= ? AND (opening_times.minute + opening_times.duration) >= ?",
-      t.wday,
-      (t.hour * 60) + t.min,
-      (t.hour * 60) + t.min
-    )
-    # AND duration <= ?
+    joins(:opening_times).merge(OpeningTime.right_now)
+  end
+
+  def open?
+    opening_times.right_now.any?
   end
 
   def to_s

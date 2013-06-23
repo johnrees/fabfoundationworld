@@ -17,9 +17,8 @@ describe Lab do
         FactoryGirl.create(:lab,
           opening_times: [
             FactoryGirl.create(:opening_time,
-              day_of_the_week: t.wday,
-              minute: (t.hour * 60) + t.min,
-              duration: 4
+              minute: (t.hour * 60) + t.min - 2,
+              duration: 1.hour
             )
           ]
         )
@@ -30,13 +29,11 @@ describe Lab do
       end
 
       it "should not find closed labs" do
-        Timecop.travel(10.minutes)
+        Timecop.travel(2.hours)
         Lab.open.should_not include lab
       end
 
-
     end
-
 
   end
 
@@ -73,7 +70,8 @@ describe Lab do
 
       it "should be verifiable" do
         lab.verify!
-        lab.reload.previous_version.should be_unverified
+        lab.reload
+        lab.previous_version.should be_unverified
         lab.should be_verified
       end
 
