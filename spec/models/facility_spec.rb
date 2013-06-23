@@ -1,5 +1,6 @@
 require 'spec_helper'
 
 describe Facility do
-  pending { should have_and_belong_to_many :labs }
+  it { should validate_presence_of :type }
+  it { should validate_presence_of :name }
 end

@@ -22,7 +22,9 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'coffee-rails', '~> 4.0.0'
 
 gem 'simple_form'
-gem 'carmen-rails', github: 'jim/carmen-rails'
+# gem 'carmen-rails', github: 'jim/carmen-rails'
+gem 'countries'
+gem 'country_select', github: 'stefanpenner/country_select'
 gem 'combined_time_select'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

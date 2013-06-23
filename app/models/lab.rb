@@ -8,7 +8,7 @@ class Lab < ActiveRecord::Base
   KINDS = %w(fab_lab mini_fab_lab planned_fab_lab)
 
   validates :name, presence: true
-  validates :address, :postal_code, :kind, presence: true
+  validates :address, :postal_code, :kind, :country_code, presence: true
 
   state_machine :initial => :unverified do
     event :verify do
@@ -27,8 +27,7 @@ class Lab < ActiveRecord::Base
   end
 
   def country
-    # country_code
-    Carmen::Country.coded("GB").name
+    Country[self.country_code.upcase].name
   end
 
 private

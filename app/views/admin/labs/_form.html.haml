@@ -2,8 +2,7 @@
   %fieldset
     %legend Basic Information
 
-    / = f.input :country_code do
-    / = f.country_select :country_code, { object: f.object, prompt: "Country" }
+    = f.input :country_code, label: 'Country'
 
     = f.input :name
     #map

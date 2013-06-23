@@ -16,6 +16,7 @@ describe Lab do
 
       it { should have_many(:opening_times) }
       it { should validate_presence_of(:kind) }
+      it { should validate_presence_of(:country_code) }
 
       it "should have kinds_for_select" do
         Lab.kinds_for_select.should eq(
@@ -53,9 +54,8 @@ describe Lab do
       end
 
       it "should avoid duplicate slugs" do
-        pending "need to sort country codes"
-        lab1 = Lab.create(name: 'Space Lab', country_code: 'FR')
-        lab2 = Lab.create(name: 'Space Lab', country_code: 'ES')
+        lab1 = FactoryGirl.create(:lab, name: 'Space Lab', country_code: 'fr')
+        lab2 = FactoryGirl.create(:lab, name: 'Space Lab', country_code: 'es')
         lab2.slug.should eq('space-lab-spain')
       end
 

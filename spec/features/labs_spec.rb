@@ -53,7 +53,6 @@ describe "Labs" do
 
     %w(name address postal_code).each do |name|
       it "should show #{name}" do
-        pending "sort out labs show page"
         lab.verify!
         visit lab_path(lab.reload)
         page.should have_content lab[name]
@@ -75,7 +74,7 @@ describe "Labs" do
 
       # fill_in 'Opening Hours', with: 'Monday - Friday'
       fill_in 'Notes', with: 'laboris nisi ut aliquip ex ea commodo'
-      # select 'France', from: 'Country'
+      select 'France', from: 'Country'
 
       select 'Fab Lab', from: 'Kind'
 
