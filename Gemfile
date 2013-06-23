@@ -49,23 +49,24 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :development do
-  gem 'i18n-spec'
-  gem 'localeapp'
-end
 
 
 group :development, :test do
+  gem "rspec-rails"
+  gem "timecop"
   gem "rb-fsevent"
   gem "guard"
   gem "guard-rspec"
-  gem "rspec-rails"
   gem "shoulda-matchers"
   gem "capybara"
   gem "launchy"
   gem "factory_girl_rails"
 end
 
+group :development do
+  gem 'i18n-spec'
+  gem 'localeapp'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

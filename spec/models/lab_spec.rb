@@ -8,6 +8,38 @@ describe Lab do
     postal_code: '13113',
     kind: 0) }
 
+  describe "open hours" do
+
+    describe "open scope" do
+
+      let!(:lab) {
+        t = Time.now
+        FactoryGirl.create(:lab,
+          opening_times: [
+            FactoryGirl.create(:opening_time,
+              day_of_the_week: t.wday,
+              minute: (t.hour * 60) + t.min,
+              duration: 4
+            )
+          ]
+        )
+      }
+
+      it "should find open labs" do
+        Lab.open.should include lab
+      end
+
+      it "should not find closed labs" do
+        Timecop.travel(10.minutes)
+        Lab.open.should_not include lab
+      end
+
+
+    end
+
+
+  end
+
   describe "attributes" do
 
     describe "kinds" do

@@ -67,6 +67,14 @@ describe "Labs" do
 
   end
 
+  # describe "opening hours" do
+
+  #   it "should have opening hours on form" do
+
+  #   end
+
+  # end
+
   describe "adding" do
 
     it "should be creatable" do
