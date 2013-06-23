@@ -4,6 +4,12 @@ describe "Labs" do
 
   describe "listing" do
 
+    it "should have add a lab button" do
+      visit '/labs'
+      click_link "Add a Lab"
+      page.should have_selector 'h1', 'New lab'
+    end
+
     it "should have list" do
       visit '/labs'
       page.should have_selector 'h1', 'Listing Labs'
@@ -69,8 +75,8 @@ describe "Labs" do
       fill_in 'Name', with: 'A lab'
       fill_in 'Address', with: "44 Some Road\nParis"
       fill_in 'Postal code', with: '23032'
-      fill_in 'Latitude', with: '33.420'
-      fill_in 'Longitude', with: '-1.303'
+      # fill_in 'Latitude', with: '33.420'
+      # fill_in 'Longitude', with: '-1.303'
 
       # fill_in 'Opening Hours', with: 'Monday - Friday'
       fill_in 'Notes', with: 'laboris nisi ut aliquip ex ea commodo'
@@ -79,7 +85,7 @@ describe "Labs" do
       select 'Fab Lab', from: 'Kind'
 
       click_button 'Create'
-      page.should have_selector 'h1', 'Thank you'
+      page.should have_selector 'h1', text: 'Thank you'
     end
 
   end

@@ -52,7 +52,8 @@ class LabsController < ApplicationController
         :kind,
         :notes,
         :latitude,
-        :longitude
+        :longitude,
+        :country_code
       )
     end
 end
