@@ -1,5 +1,11 @@
-# Fab Foundation World
+# fabfoundationworld
 
-A next-generation directory of the world's Fab Labs. Coming Soon.
+A ruby translation project managed on [Locale](http://www.localeapp.com/) that's open to all!
 
-[![Build Status](https://travis-ci.org/johnrees/fabfoundationworld.png)](https://travis-ci.org/johnrees/fabfoundationworld) [![Code Climate](https://codeclimate.com/github/johnrees/fabfoundationworld.png)](https://codeclimate.com/github/johnrees/fabfoundationworld) [![Dependency Status](https://gemnasium.com/johnrees/fabfoundationworld.png)](https://gemnasium.com/johnrees/fabfoundationworld)
+## Contributing to fabfoundationworld
+
+- Edit the translations directly on the [fabfoundationworld](http://www.localeapp.com/projects/public?search=fabfoundationworld) project on Locale.
+- **That's it!**
+- The maintainer will then pull translations from the Locale project and push to Github.
+
+Happy translating!
