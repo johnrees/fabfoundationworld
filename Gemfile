@@ -6,6 +6,10 @@ gem 'rails', '4.0.0.rc2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+gem 'countries'
+gem 'country_select', github: 'stefanpenner/country_select'
+gem 'simple_form', github: 'plataformatec/simple_form'
+gem 'haml-rails'
 gem 'geocoder'
 gem "cancan"
 gem 'sorcery', github: 'NoamB/sorcery'
@@ -21,10 +25,10 @@ gem 'dotenv-rails', :groups => [:development, :test]
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
-gem 'simple_form', github: 'plataformatec/simple_form'
+
 # gem 'carmen-rails', github: 'jim/carmen-rails'
-gem 'countries'
-gem 'country_select', github: 'stefanpenner/country_select'
+
+
 gem 'combined_time_select'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -39,8 +43,6 @@ gem 'paper_trail', github: 'airblade/paper_trail', branch: 'rails4'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'haml-rails'
-
 gem 'state_machine'
 gem 'friendly_id', github: 'FriendlyId/friendly_id'
 
@@ -48,8 +50,6 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
-
 
 group :development, :test do
   gem "rspec-rails"
@@ -63,10 +63,10 @@ group :development, :test do
   gem "factory_girl_rails"
 end
 
-group :development do
-  gem 'i18n-spec'
-  gem 'localeapp'
-end
+# group :development do
+  # gem 'i18n-spec'
+  # gem 'localeapp'
+# end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
