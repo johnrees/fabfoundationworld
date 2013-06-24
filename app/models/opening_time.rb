@@ -3,6 +3,8 @@ class OpeningTime < ActiveRecord::Base
 
   validates :lab, :day_of_the_week, :minute, :duration, presence: true
 
+  default_scope { order(day_of_the_week: :asc, minute: :asc) }
+
   scope :right_now, -> {
     t = Time.now
     where(

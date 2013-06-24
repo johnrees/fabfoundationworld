@@ -4,6 +4,7 @@ class Lab < ActiveRecord::Base
   has_many :opening_times
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
+  accepts_nested_attributes_for :opening_times, allow_destroy: true
 
   KINDS = %w(fab_lab mini_fab_lab planned_fab_lab)
 

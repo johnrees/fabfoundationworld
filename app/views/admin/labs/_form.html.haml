@@ -31,7 +31,8 @@
   %fieldset
     %legend Opening Hours
     %table#opening_hours
-      - %w(monday tuesday wednesday thursday friday saturday sunday).each_with_index do |day, index|
+      - @days.each_with_index do |day, index|
+
         %tr{class: "#{day} day#{index} day"}
           %th= day.capitalize
           %td

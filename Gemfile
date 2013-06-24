@@ -24,7 +24,7 @@ gem 'dotenv-rails', :groups => [:development, :test]
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-
+gem 'nested_form'
 
 # gem 'carmen-rails', github: 'jim/carmen-rails'
 

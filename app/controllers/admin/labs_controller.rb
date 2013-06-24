@@ -19,6 +19,10 @@ class Admin::LabsController < Admin::AdminController
 
   # GET /labs/1/edit
   def edit
+    @days = %w(mon tue wed thu fri sat sun)
+    7.times do
+      @lab.opening_times.build
+    end
   end
 
   # POST /labs
