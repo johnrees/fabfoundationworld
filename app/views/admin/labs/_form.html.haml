@@ -10,10 +10,11 @@
     = f.input :latitude, as: 'hidden'
     = f.input :longitude, as: 'hidden'
 
-    / = f.input :phone_number
-    / = f.input :email_address
-    / = f.input :website
+  %fieldset
+    %legend Contact Details
 
+    = f.input :phone_number
+    / = f.input :website
     / = f.input :description
 
   %fieldset

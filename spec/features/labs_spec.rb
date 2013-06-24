@@ -81,7 +81,7 @@ describe "Labs" do
       page.should have_selector 'h1', 'NASA'
     end
 
-    %w(name address postal_code).each do |name|
+    %w(name address postal_code phone_number).each do |name|
       it "should show #{name}" do
         lab.verify!
         visit lab_path(lab.reload)
@@ -107,6 +107,8 @@ describe "Labs" do
       fill_in 'Name', with: 'A lab'
       fill_in 'Address', with: "44 Some Road\nParis"
       fill_in 'Postal code', with: '23032'
+      fill_in 'Phone number', with: '20982442'
+      # fill_in 'Email address', with: 'test@test.com'
       # fill_in 'Latitude', with: '33.420'
       # fill_in 'Longitude', with: '-1.303'
 
