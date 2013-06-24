@@ -47,17 +47,28 @@ describe "Labs" do
 
     let(:lab) { FactoryGirl.create(:lab, name: 'NASA') }
 
-    it "should show if open" do
-      lab.opening_times << FactoryGirl.create(:opening_time)
-      lab.verify!
-      visit lab_path(lab)
-      page.should have_content 'Open'
-    end
+    describe "opening times" do
 
-    it "should show if closed" do
-      lab.verify!
-      visit lab_path(lab)
-      page.should have_content 'Closed'
+      pending "it should support timezones"
+
+      pending "should show today's opening times" do
+      end
+
+      it "should show if open" do
+        lab.opening_times << FactoryGirl.create(:opening_time)
+        lab.verify!
+        visit lab_path(lab)
+        page.should have_content 'Open'
+        # make this javascript
+      end
+
+      it "should show if closed" do
+        lab.verify!
+        visit lab_path(lab)
+        page.should have_content 'Closed'
+        # make this javascript
+      end
+
     end
 
     it "should not be showable if unverified" do

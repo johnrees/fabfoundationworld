@@ -3,14 +3,11 @@ class OpeningTime < ActiveRecord::Base
 
   validates :lab, :day_of_the_week, :minute, :duration, presence: true
 
-
   scope :right_now, -> {
     t = Time.now
     where(
-      "day_of_the_week = ? AND minute <= ? AND (minute + duration) >= ?",
-      t.wday,
-      (t.hour * 60) + t.min,
-      (t.hour * 60) + t.min
+      "day_of_the_week = :day AND minute <= :min AND (minute + duration) >= :min",
+      { day: t.wday, min: t.minute_of_the_day }
     )
   }
 
