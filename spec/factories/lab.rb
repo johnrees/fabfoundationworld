@@ -9,6 +9,7 @@ FactoryGirl.define do
     latitude 30.2490428
     longitude -13.2249820
     urls ["http://www.media.mit.edu/‎", "https://twitter.com/medialab"]
+    phone_number "+238982 4892489"
     # Phone:+1 617-253-5960
     # Hours:
     #   Monday  9:00 am – 5:00 pm
