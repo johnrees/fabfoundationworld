@@ -5,7 +5,7 @@
     = f.input :country_code, label: 'Country'
     = f.input :name
     #map
-    = f.input :address
+    = f.input :address, input_html: { id: 'geocomplete' }
     = f.input :postal_code
     = f.input :latitude, as: 'hidden'
     = f.input :longitude, as: 'hidden'

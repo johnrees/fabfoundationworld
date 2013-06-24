@@ -3,7 +3,7 @@
   %head
     %title Fabfoundationworld
     = stylesheet_link_tag    "application", media: "all"
-    = javascript_include_tag "admin"
+    = javascript_include_tag "http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false", "admin"
     = csrf_meta_tags
   %body
     %h1= link_to title, admin_root_path
