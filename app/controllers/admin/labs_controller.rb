@@ -19,10 +19,19 @@ class Admin::LabsController < Admin::AdminController
 
   # GET /labs/1/edit
   def edit
-    @days = %w(mon tue wed thu fri sat sun)
-    7.times do
-      @lab.opening_times.build
-    end
+    # 7.times do |day|
+    #   @lab.opening_times.each do |time|
+    #     break if time.start_minute => day and time.start_minute <=
+    #   end
+    #   @lab.opening_times.build
+    # end
+
+    # 7.times do |day|
+    #   @lab.opening_times.build(
+    #     start_minute: (day * Time.minutes_in_a_day) + (18 * 30),
+    #     end_minute: (day * Time.minutes_in_a_day) + (34 * 30)
+    #   )
+    # end
   end
 
   # POST /labs
@@ -73,7 +82,7 @@ class Admin::LabsController < Admin::AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lab_params
-      params.require(:lab).permit(:name, :address, :postal_code, :state)
+      params.require(:lab).permit(:name, :address, :postal_code, :state, :opening_times_attributes => [:id, :start_minute, :end_minute, '_destroy'])
     end
 end
 

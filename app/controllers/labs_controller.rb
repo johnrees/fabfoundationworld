@@ -19,10 +19,13 @@ class LabsController < ApplicationController
   # GET /labs/new
   def new
     @lab = Lab.new
-    @days = %w(sun mon tue wed thu fri sat)
-    7.times do |index|
-      @lab.opening_times.build#(day_of_the_week: index)
-    end
+    # 7.times do |day|
+    #   @lab.opening_times.build(
+    #     start_minute: (day * Time.minutes_in_a_day) + (18 * 30),
+    #     end_minute: (day * Time.minutes_in_a_day) + (34 * 30),
+    #     closed: ([0,6].include? day)
+    #   )
+    # end
   end
 
   def map
@@ -49,15 +52,16 @@ class LabsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lab_params
-      params.require(:lab).permit(
-        :name,
-        :address,
-        :postal_code,
-        :kind,
-        :notes,
-        :latitude,
-        :longitude,
-        :country_code
-      )
+      # params.require(:lab).permit(
+      #   :name,
+      #   :address,
+      #   :postal_code,
+      #   :kind,
+      #   :notes,
+      #   :latitude,
+      #   :longitude,
+      #   :country_code
+      # )
+      params.require(:lab).permit(:name, :address, :postal_code, :state, :country_code, :kind, :opening_times_attributes => [:id, :start_minute, :end_minute, :closed])
     end
 end

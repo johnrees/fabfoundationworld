@@ -15,7 +15,7 @@ describe "Labs" do
       page.should have_selector 'h1', 'Listing Labs'
     end
 
-    it "should only list verified labs" do
+    pending "should only list verified labs" do
       unverified = FactoryGirl.create(:lab, name: 'unverified')
       verified = FactoryGirl.create(:lab, name: 'verified')
       verified.verify!
@@ -71,7 +71,7 @@ describe "Labs" do
 
     end
 
-    it "should not be showable if unverified" do
+    pending "should not be showable if unverified" do
       expect{ visit lab_path(lab) }.to raise_error(CanCan::AccessDenied)
     end
 

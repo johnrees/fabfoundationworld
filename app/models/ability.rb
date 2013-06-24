@@ -15,6 +15,7 @@ class Ability
       end
       can :create, Lab
       # can :update, Lab
+      can :manage, Lab
 
     # end
     #

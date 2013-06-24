@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.geocomplete
 //= require turbolinks
+//= require admin/labs
 //= require labs

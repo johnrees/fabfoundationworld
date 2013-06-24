@@ -32,24 +32,33 @@
   %fieldset
     %legend Opening Hours
     %table#opening_hours
-      - @days.each_with_index do |day, index|
 
-        %tr{class: "#{day} day#{index} day"}
-          %th= day.capitalize
-          %td
-            .times
-              / = time_select "opening_times[][]", :blah, {default: Time.now.change(hour: 9, min: 0), combined: true, minute_interval: 30, time_separator: ''}, class: 'start-time'
+      / / what I want
+      / = f.simple_fields_for :opening_times do |t|
+      /   %tr{class: "day#{index} day"}
+      /     %th
+      /       /= Date::ABBR_DAYNAMES[index]
+      /     %td
+      /       .times
+      /          = f.input :start_minute, as: 'time'
+      /          = f.input :end_minute, as: 'time'
+      /     %td
+      /       = f.input :closed, as: 'boolean', label: 'Closed'
 
-              = time_select :start_time, :blah, {default: Time.now.change(hour: 9, min: 0), combined: true, minute_interval: 30, time_separator: ''}, class: 'start-time'
-              \-
-              = time_select :end_time, :blah, {default: Time.now.change(hour: 17, min: 0), combined: true, minute_interval: 30, time_separator: ''}, class: 'end-time'
-          %td
-            = label_tag do
-              = check_box_tag 'closed', {}, (index >= 5), class: 'closed'
-              Closed
-          %td
-            - if index == 0
-              = link_to "↓ Apply to all", "#", id: 'apply-to-all'
+      / - f.object.opening_times.each_with_index do |opening_time, index|
+      /   = f.simple_fields_for :opening_times, opening_time do |t|
+      /     %tr{class: "day#{index} day"}
+      /       %th= Date::ABBR_DAYNAMES[index]
+      /       %td
+      /         .times
+      /           = t.input_field :start_minute, as: 'select', collection: (0..47).map{|hour| hour*30 + (index * Time.minutes_in_a_day) }.each.collect{ |hour| [Time.at(hour * 60).utc.strftime("%H:%M"), hour]}
+      /           \-
+      /           = t.input_field :end_minute, as: 'select', collection: (0..47).map{|hour| hour*30 + (index * Time.minutes_in_a_day) }.each.collect{ |hour| [Time.at(hour * 60).utc.strftime("%H:%M"), hour]}
+      /       %td
+      /         = t.input :closed, as: 'boolean', label: 'Closed'
+      /       / %td
+      /       /   - if index == 0
+      /       /     = link_to "↓ Apply to all", "#", id: 'apply-to-all'
 
   / %fieldset
   /   %legend Photos

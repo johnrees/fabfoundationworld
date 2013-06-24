@@ -1,5 +1,9 @@
 class Time
 
+  def self.minutes_in_a_day
+    1440
+  end
+
   def self.minutes_in_a_week
     10080
   end

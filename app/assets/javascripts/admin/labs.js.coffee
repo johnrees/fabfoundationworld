@@ -1,6 +1,6 @@
 jQuery ->
 
-  $('.closed').change ->
+  $('input.boolean').change ->
     $(this).parents('tr').find('.times').toggle !$(this).is(':checked')
   .trigger 'change'
 
@@ -18,3 +18,6 @@ jQuery ->
   $("#geocomplete").bind "geocode:dragged", (event, latLng) ->
     $("input#lab_latitude").val latLng.lat()
     $("input#lab_longitude").val latLng.lng()
+
+  # move sunday to the bottom
+  $('#opening_hours tbody').append $(this).find('tr:first')
