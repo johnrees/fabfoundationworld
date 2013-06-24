@@ -19,9 +19,9 @@ class LabsController < ApplicationController
   # GET /labs/new
   def new
     @lab = Lab.new
-    @days = %w(mon tue wed thu fri sat sun)
-    7.times do
-      @lab.opening_times.build
+    @days = %w(sun mon tue wed thu fri sat)
+    7.times do |index|
+      @lab.opening_times.build#(day_of_the_week: index)
     end
   end
 

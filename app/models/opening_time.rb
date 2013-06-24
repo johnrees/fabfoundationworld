@@ -1,15 +1,15 @@
 class OpeningTime < ActiveRecord::Base
   belongs_to :lab
 
-  validates :lab, :day_of_the_week, :minute, :duration, presence: true
+  validates :lab, :start_minute, :end_minute, presence: true
 
-  default_scope { order('opening_times.day_of_the_week, opening_times.minute') }
+  default_scope { order('opening_times.start_minute') }
 
   scope :right_now, -> {
     t = Time.now
     where(
-      "day_of_the_week = :day AND minute <= :min AND (minute + duration) >= :min",
-      { day: t.wday, min: t.minute_of_the_day }
+      "start_minute <= :min AND end_minute >= :min",
+      { min: t.minute_of_the_week }
     )
   }
 

@@ -45,9 +45,8 @@ ActiveRecord::Schema.define(version: 20130620112408) do
 
   create_table "opening_times", force: true do |t|
     t.integer  "lab_id"
-    t.integer  "day_of_the_week"
-    t.integer  "minute"
-    t.integer  "duration"
+    t.integer  "start_minute"
+    t.integer  "end_minute"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -38,6 +38,8 @@
           %th= day.capitalize
           %td
             .times
+              / = time_select "opening_times[][]", :blah, {default: Time.now.change(hour: 9, min: 0), combined: true, minute_interval: 30, time_separator: ''}, class: 'start-time'
+
               = time_select :start_time, :blah, {default: Time.now.change(hour: 9, min: 0), combined: true, minute_interval: 30, time_separator: ''}, class: 'start-time'
               \-
               = time_select :end_time, :blah, {default: Time.now.change(hour: 17, min: 0), combined: true, minute_interval: 30, time_separator: ''}, class: 'end-time'
