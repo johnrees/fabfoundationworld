@@ -1,4 +1,5 @@
 class Admin::MachinesController < Admin::AdminController
+
   before_action :set_machine, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -7,6 +8,17 @@ class Admin::MachinesController < Admin::AdminController
 
   def index
     @machines = Machine.all
+  end
+
+  def edit
+  end
+
+  def update
+    if @machine.update(machine_params)
+      redirect_to admin_machines_path, notice: 'Machine was successfully updated.'
+    else
+      render action: 'edit'
+    end
   end
 
   def create
