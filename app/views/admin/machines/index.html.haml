@@ -1,3 +1,8 @@
 %h1 Machines
 
 = link_to "Add Machine", new_admin_machine_path
+
+%ul
+  - @machines.each do |machine|
+    = content_tag_for :li, machine do
+      = link_to machine, edit_admin_machine_path(machine)

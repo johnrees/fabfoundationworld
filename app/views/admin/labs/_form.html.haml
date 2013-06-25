@@ -27,6 +27,7 @@
         - Machine.all.each do |machine|
           %li
             %h4= machine
+            / = check_box_tag :included
             = text_area_tag :description
 
   %fieldset
