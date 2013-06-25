@@ -4,13 +4,13 @@ describe "Labs" do
 
   describe "listing" do
 
-    it "should have add a lab button" do
+    it "has add a lab button" do
       visit '/labs'
       click_link "Add a Lab"
       page.should have_selector 'h1', 'New lab'
     end
 
-    it "should have list" do
+    it "has list" do
       visit '/labs'
       page.should have_selector 'h1', 'Listing Labs'
     end
@@ -24,7 +24,7 @@ describe "Labs" do
       page.should_not have_link 'unverified'
     end
 
-    it "should be clickable" do
+    it "is clickable" do
       lab = FactoryGirl.create(:lab, name: 'NASA')
       lab.verify!
       visit '/labs'
@@ -36,7 +36,7 @@ describe "Labs" do
 
   describe "map" do
 
-    it "should have map" do
+    it "has map" do
       visit "/map"
       page.should have_selector '#map'
     end
@@ -54,7 +54,7 @@ describe "Labs" do
       pending "should show today's opening times" do
       end
 
-      it "should show if open" do
+      it "shows if open" do
         lab.opening_times << FactoryGirl.create(:opening_time)
         lab.verify!
         visit lab_path(lab)
@@ -62,7 +62,7 @@ describe "Labs" do
         # make this javascript
       end
 
-      it "should show if closed" do
+      it "shows if closed" do
         lab.verify!
         visit lab_path(lab)
         page.should have_content 'Closed'
@@ -75,14 +75,14 @@ describe "Labs" do
       expect{ visit lab_path(lab) }.to raise_error(CanCan::AccessDenied)
     end
 
-    it "should be showable if verified" do
+    it "is showable if verified" do
       lab.verify!
       visit lab_path(lab.reload)
       page.should have_selector 'h1', 'NASA'
     end
 
     %w(name address postal_code phone_number).each do |name|
-      it "should show #{name}" do
+      it "shows #{name}" do
         lab.verify!
         visit lab_path(lab.reload)
         page.should have_content lab[name]
@@ -101,7 +101,7 @@ describe "Labs" do
 
   describe "adding" do
 
-    it "should be creatable" do
+    it "is creatable" do
       visit new_lab_url
 
       fill_in 'Name', with: 'A lab'

@@ -16,7 +16,7 @@ describe "Admin Area" do
 
   describe "edit lab" do
 
-    it "should have machines" do
+    it "has machines" do
       lab = FactoryGirl.create(:lab, name: 'iaac')
       machine = FactoryGirl.create(:machine, name: 'laser')
       visit edit_admin_lab_path(lab)
@@ -33,7 +33,7 @@ describe "Admin Area" do
       page.should have_selector '#notice', 'Lab was successfully updated.'
     end
 
-    it "should have map" do
+    it "has map" do
       lab = FactoryGirl.create(:lab, name: 'iaac')
       visit edit_admin_lab_path(lab)
       page.should have_selector '#map'

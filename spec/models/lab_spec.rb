@@ -11,7 +11,7 @@ describe Lab do
   describe "attributes" do
 
     describe "country" do
-      it "should have country name" do
+      it "has country name" do
         lab.country.should eq('France')
       end
     end
@@ -20,7 +20,7 @@ describe Lab do
       pending { should have_and_belong_to_many :facilities }
       it { should validate_presence_of(:kind) }
       it { should validate_presence_of(:country_code) }
-      it "should have kinds_for_select" do
+      it "has kinds_for_select" do
         Lab.kinds_for_select.should eq(
           [
             ['Fab Lab', 0],
@@ -35,10 +35,10 @@ describe Lab do
     end
 
     describe "states" do
-      it "should have initial state" do
+      it "has initial state" do
         lab.should be_unverified
       end
-      it "should be verifiable" do
+      it "is verifiable" do
         lab.verify!
         lab.reload
         lab.previous_version.should be_unverified
@@ -47,10 +47,10 @@ describe Lab do
     end
 
     describe "slugs" do
-      it "should have slug" do
+      it "has slug" do
         lab.slug.should eq('space-lab')
       end
-      it "should avoid duplicate slugs" do
+      it "avoids duplicate slugs" do
         lab1 = FactoryGirl.create(:lab, name: 'Space Lab', country_code: 'fr')
         lab2 = FactoryGirl.create(:lab, name: 'Space Lab', country_code: 'es')
         lab2.slug.should eq('space-lab-spain')
@@ -72,11 +72,11 @@ describe Lab do
         )
       }
 
-      it "should find open labs" do
+      it "finds open labs" do
         Lab.open.should include lab
       end
 
-      it "should not find closed labs" do
+      it "does not find closed labs" do
         lab.reload
         Timecop.travel(2.hours)
         Lab.open.should_not include lab

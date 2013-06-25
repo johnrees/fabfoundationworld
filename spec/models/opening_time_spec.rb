@@ -7,7 +7,7 @@ describe OpeningTime do
     pending { should validate_presence_of field }
   end
 
-  it "should have default_scope" do
+  it "has default_scope" do
     latest = FactoryGirl.create(:opening_time, start_minute: 800)
     earliest = FactoryGirl.create(:opening_time, start_minute: 1, end_minute: 20)
     middle = FactoryGirl.create(:opening_time, start_minute: 300)
@@ -16,14 +16,14 @@ describe OpeningTime do
 
   describe "right now scope" do
 
-    it "should include 'open' openingtimes" do
+    it "includes 'open' openingtimes" do
       Timecop.freeze do
         open = FactoryGirl.create(:opening_time)
         OpeningTime.right_now.should include open
       end
     end
 
-    it "should exclude 'closed' openingtimes" do
+    it "excludes 'closed' openingtimes" do
       Timecop.freeze do
         closed = FactoryGirl.create(:opening_time, start_minute: 0, end_minute: 1)
         OpeningTime.right_now.should_not include closed
