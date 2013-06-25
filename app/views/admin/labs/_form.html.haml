@@ -22,11 +22,11 @@
     = f.input :kind, collection: Lab.kinds_for_select, include_blank: false
 
     %fieldset
-      %legend Machines
-      %ul#machines
-        - Machine.all.each do |machine|
+      %legend Tools
+      %ul#tools
+        - Tool.all.each do |tool|
           %li
-            %h4= machine
+            %h4= tool
             / = check_box_tag :included
             = text_area_tag :description
 

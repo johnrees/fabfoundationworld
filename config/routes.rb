@@ -8,7 +8,7 @@ Fabfoundationworld::Application.routes.draw do
 
   namespace 'admin' do
     resources :labs
-    resources :machines
+    resources :tools
     root to: 'labs#index'
   end
 

@@ -16,9 +16,9 @@ describe "Admin Area" do
 
   describe "edit lab" do
 
-    it "has machines" do
+    it "has tools" do
       lab = FactoryGirl.create(:lab, name: 'iaac')
-      machine = FactoryGirl.create(:machine, name: 'laser')
+      tool = FactoryGirl.create(:tool, name: 'laser')
       visit edit_admin_lab_path(lab)
       page.should have_content 'laser'
     end

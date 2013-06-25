@@ -1,0 +1,8 @@
+%h1 Tools
+
+= link_to "Add Tool", new_admin_tool_path
+
+%ul
+  - @tools.each do |tool|
+    = content_tag_for :li, tool do
+      = link_to tool, edit_admin_tool_path(tool)

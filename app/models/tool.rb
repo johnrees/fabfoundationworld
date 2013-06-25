@@ -1,4 +1,4 @@
-class Machine < Facility
+class Tool < Facility
 
   def to_s
     name
