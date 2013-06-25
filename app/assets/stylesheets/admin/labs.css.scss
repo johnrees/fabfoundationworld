@@ -8,3 +8,11 @@
 th {
   text-align: right;
 }
+
+#machines li {
+  list-style: none;
+  float: left;
+  h4 {
+    margin: 0;
+  }
+}

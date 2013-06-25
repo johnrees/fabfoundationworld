@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Machine.delete_all
+Machine.create([
+  { name: "Laser Cutter" },
+  { name: "3D Printer" },
+  { name: "Precision Milling Machine" },
+  { name: "CNC Router" },
+  { name: "Vinyl Cutter" },
+  { name: "Electronics Workbench" },
+  { name: "Robot" },
+  { name: "Other Tools" }
+])

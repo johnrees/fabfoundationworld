@@ -23,11 +23,11 @@
 
     %fieldset
       %legend Machines
-      %table#facilities
+      %ul#machines
         - Machine.all.each do |machine|
-          %tr
-            %th= machine
-            %td blargh
+          %li
+            %h4= machine
+            = text_area_tag :description
 
   %fieldset
     %legend Opening Hours
