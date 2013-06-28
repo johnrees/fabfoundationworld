@@ -12,5 +12,5 @@ Fabfoundationworld::Application.routes.draw do
     root to: 'labs#index'
   end
 
-  root to: 'static#home'
+  root to: 'labs#index'
 end

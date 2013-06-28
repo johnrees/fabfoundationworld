@@ -11,9 +11,14 @@ jQuery ->
       $(this).find('.end-time').val $('.day0 .end-time').val()
 
   $("#geocomplete").geocomplete
-    map: '#map'
+    map: "#map"
+    details: ".details"
+    detailsAttribute: "data-geo"
     markerOptions:
       draggable: true
+  .bind "geocode:result", (event, result) ->
+    console.log result.address_components
+    console.log $(result.adr_address).find('span.country-name').get(0)#.text()
 
   $("#geocomplete").bind "geocode:dragged", (event, latLng) ->
     $("input#lab_latitude").val latLng.lat()

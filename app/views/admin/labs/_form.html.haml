@@ -2,13 +2,27 @@
   %fieldset
     %legend Basic Information
 
-    = f.input :country_code, label: 'Country'
-    = f.input :name
+
     #map
-    = f.input :address, input_html: { id: 'geocomplete' }
-    = f.input :postal_code
-    = f.input :latitude, as: 'hidden'
-    = f.input :longitude, as: 'hidden'
+    / = f.input :address, input_html: { id: 'geocomplete' }
+    / = f.input :postal_code
+    / = f.input :country_code, label: 'Country'
+    / = f.input :latitude, as: 'hidden'
+    / = f.input :longitude, as: 'hidden'
+    .details
+      = f.input :name, { input_html: { data: { geo: 'country_short' }}}
+      .row
+        .large-8.columns
+          #map_canvas
+        .large-4.columns
+          = f.input :address, input_html: { id: 'geocomplete' }
+        .large-4.columns
+          = hidden_field_tag "country", { input_html: { data: { geo: 'country_short' }}}
+          = f.input :country_code
+        .large-4.columns
+          = f.input :latitude, { input_html: { data: { geo: 'lat' }}}
+        .large-4.columns
+          = f.input :longitude, { input_html: { data: { geo: 'lng' }}}
 
   %fieldset
     %legend Contact Details
